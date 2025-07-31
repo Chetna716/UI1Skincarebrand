@@ -1,0 +1,41 @@
+/* App.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: sans-serif;
+}
+
+.main-container {
+  /* Removed padding to ensure navbar is at the very top */
+}
+
+.top-image {
+  width: 98%;
+  max-width: none;
+  height: calc(100vh - 60px); /* fills the remaining viewport height after navbar */
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid black;
+  margin: 20px auto 0; /* adds top margin to create space below navbar */
+  position: relative;
+  transform: translateY(0);
+  transition: transform 0.5s ease-out;
+}
+
+.top-image.scroll-up {
+  transform: translateY(-200px);
+}
+
+.top-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.5px;
+  background-color: black;
+}
+

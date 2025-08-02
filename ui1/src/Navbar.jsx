@@ -1,22 +1,25 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import './Navbar.css'
 
-function Navbar() {
-    return(
+const Navbar = forwardRef(({ logoRef, navLinksRef, navButtonsRef }, ref) => {
+    return (
         <nav className="navbar">
-            <div className='logo'> <img src="./logo.png" /> BARE BLOOM</div>
+            <div className='logo' ref={logoRef}>
+                <img src="./logo.png" alt="logo" /> BARE BLOOM
+            </div>
             <ul className='nav-links'>
-                <li><a href="#">Skincare</a></li>
-                <li><a href="#">Body</a></li>
-                <li><a href="#">Bestsellers</a></li>
-                <li><a href="#">About Us</a></li>
+                {['Skincare', 'Body', 'Bestsellers', 'About Us'].map((text, i) => (
+                    <li key={i} ref={el => navLinksRef.current[i] = el}>
+                        <a href="#">{text}</a>
+                    </li>
+                ))}
             </ul>
             <div className='nav-buttons'>
-                <button className='login-btn'> Log In</button>
-                <button className='cart-btn'> Cart</button>
+                <button ref={el => navButtonsRef.current[0] = el} className='login-btn'> Log In</button>
+                <button ref={el => navButtonsRef.current[1] = el} className='cart-btn'> Cart</button>
             </div>
-         </nav>
+        </nav>
     )
-}
+})
 
 export default Navbar

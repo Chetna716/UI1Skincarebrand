@@ -4,6 +4,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -60,7 +64,7 @@ body {
 
 .tagline-text {
   position: absolute;
-  top: 100px;
+  top: 240px;
   right: 100px;
   font-family: 'DM Serif Text', serif;
   font-style: italic;
@@ -74,7 +78,7 @@ body {
 
 .description-text {
   position: absolute;
-  top: 160px;
+  top: 300px;
   right: 100px;
   font-family: 'Funnel Display', serif;
   font-weight: 400;
@@ -88,7 +92,7 @@ body {
 
 .shop-now-btn {
   position: absolute;
-  top: 350px;
+  top: 450px;
   right: 190px;
   background-color: black;
   color: white;

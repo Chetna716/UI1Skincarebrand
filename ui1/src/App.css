@@ -3,9 +3,28 @@
     background-image: url('/bg.jpg');  
     background-size: cover;
     background-position: center;
-    height: 100px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
+/* Hero Section with White Background */
+.hero-section {
+  position: relative;
+  background: white;
+  min-height: 100vh;
+}
+
+/* Top Image */
+.top-image {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  object-fit: cover;
+  z-index: 1;
+  border-radius: 8px;
+}
   

@@ -1,88 +1,162 @@
-.skincare-wrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 80px 0;
-  min-height: 400px;
+/* Wrapper for all circles */
+.circles-wrapper {
+  position: relative;   /* relative so that absolute children are positioned inside it */
+  width: 100%;
+  height: 700px;        /* adjust as per your layout */
+  background: #fff;     /* optional, just for visibility */
 }
 
-.skincare-grid {
-  display: grid;
-  grid-template-columns: 140px 120px 140px;
-  grid-template-rows: 100px 100px 100px;
-  gap: 12px;
-  position: relative;
-  max-width: 400px;
-  margin: 0 auto;
-  justify-content: center;
-  align-items: center;
-}
-
-.card:nth-child(1) { 
-  grid-column: 1; 
-  grid-row: 1 / 3; 
+/* Base style for each circle */
+.circle-card {
+  position: absolute;   /* free placement */
+  width: 200px;         /* tu apne according change karegi */
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
   background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-}
-
-.card:nth-child(2) { 
-  grid-column: 2; 
-  grid-row: 1; 
-  background: linear-gradient(135deg, #fff5f5, #fed7d7);
-}
-
-.card:nth-child(3) { 
-  grid-column: 3; 
-  grid-row: 1; 
-  background: linear-gradient(135deg, #f0fff4, #c6f6d5);
-}
-
-.card:nth-child(4) { 
-  grid-column: 2; 
-  grid-row: 2; 
-  background: linear-gradient(135deg, #faf5ff, #e9d8fd);
-}
-
-.card:nth-child(5) { 
-  grid-column: 1; 
-  grid-row: 3; 
-  background: linear-gradient(135deg, #fffaf0, #feebc8);
-}
-
-.card:nth-child(6) { 
-  grid-column: 3; 
-  grid-row: 2 / 4; 
-  background: linear-gradient(135deg, #e6fffa, #b2f5ea);
-}
-
-.card {
-  border: none;
-  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   text-align: center;
-  font-weight: 600;
-  font-size: 14px;
-  padding: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
-  font-family: 'Gantari', sans-serif;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
 }
 
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+.circle-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.center-text {
+.circle-text {
   position: absolute;
-  top: 50%;
+  bottom: 10px;
   left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 22px;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.9rem;
   font-weight: bold;
-  color: #333;
-  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.circle-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+}
+
+.circle-card:hover .circle-image {
+  transform: scale(1.05);
+}
+
+.circle-card:hover .circle-text {
+  background: rgba(0,0,0,0.8);
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* Image inside circle */
+.circle-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    /* ensures image fits circle without distortion */
+}
+
+/* Move toner image up within its circle */
+.circle3 .circle-image {
+  object-position: center 30%; /* moves image up within the circle */
+}
+
+/* Text overlay */
+.circle-text {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* Individual circle positions and colors - 2x2 grid layout */
+.circle1 { 
+  top: 100px; 
+  left: 450px; 
+  height: 270px;
+  width: 270px;
+}
+.circle2 { 
+  top: 140px; 
+  right: 530px; 
+  height: 185px;
+  width: 185px;
+}
+.circle3 { 
+  top: 400px; 
+  left: 500px; 
+
+}
+.circle4 { 
+  top: 340px; 
+  right: 500px;
+  height: 235px;
+  width: 235px;
+}
+
+.skincare-tagline {
+  position: absolute;
+  top: 150px;
+  right: 50px;
+  font-family: 'DM Serif Text', serif;
+  font-style: italic;
+  font-size: 60px;
+  color: #113805;
+  text-align: right;
+  z-index: 10;
+  max-width: 500px;
+  line-height: 1.3;
+  white-space: normal;
+}
+
+.skincare-shop-btn {
+  position: absolute;
+  top: 390px;
+  right: 140px;
+  background-color: #113805;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-family: 'Gantari', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 15px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.skincare-shop-btn:hover {
+  background-color: #2d5a1a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(17, 56, 5, 0.3);
+}
+
+.skincare-description {
+  position: absolute;
+  top: 320px;
+  left: 60px;
+  font-family: 'Funnel Display', sans-serif;
+  font-size: 21px;
+  color: #113805;
+  text-align: left;
+  z-index: 10;
+  max-width: 360px;
+  line-height: 1.5;
 }

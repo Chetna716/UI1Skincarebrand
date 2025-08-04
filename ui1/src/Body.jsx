@@ -6,25 +6,33 @@ import "./Body.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const bodyCards = [
-  { id: 1, label: "Body Lotion", image: "/body-lotion.jpg" },
-  { id: 2, label: "Soap", image: "/soap.jpg" },
-  { id: 3, label: "Body Oil", image: "/body-oil.jpg" },
-  { id: 4, label: "Body Scrub", image: "/body-scrub.jpg" }
+  { id: 1, label: "Body Lotion", image: "/lotion.jpeg" },
+  { id: 2, label: "Soap", image: "/soap.jpeg" },
+  { id: 3, label: "Body Oil", image: "/body oil.jpeg" },
+  { id: 4, label: "Body Scrub", image: "/body scrub.jpeg" }
 ];
 
 function Body() {
+  const bgImageRef = useRef(null);
   const taglineRef = useRef(null);
   const descriptionRef = useRef(null);
   const circleRefs = useRef([]);
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    if (!taglineRef.current || !wrapperRef.current) return;
+    if (!bgImageRef.current || !taglineRef.current || !wrapperRef.current) return;
 
-    // Set initial state for tagline and description
-    gsap.set(taglineRef.current, { opacity: 0, y: -50 });
-    gsap.set(descriptionRef.current, { opacity: 0, y: -30 });
-
+    // Set initial states
+    gsap.set(bgImageRef.current, { opacity: 0 });
+    gsap.set([taglineRef.current, descriptionRef.current], { 
+      opacity: 0, 
+      y: 30 
+    });
+    gsap.set(circleRefs.current, { 
+      opacity: 0,
+      y: 30
+    });
+    
     // Create timeline for animations
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -35,20 +43,35 @@ function Body() {
       }
     });
 
-    // Animate tagline first
-    tl.to(taglineRef.current, {
+    // First: Background image fade in (like landing page)
+    tl.to(bgImageRef.current, {
       opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power3.out"
+      duration: 3,
+      ease: "power1.inOut"
     })
     
-    // Then animate description
+    // Then: Tagline appears
+    .to(taglineRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power2.out"
+    }, "-=2")
+    
+    // Then: Description appears
     .to(descriptionRef.current, {
       opacity: 1,
       y: 0,
       duration: 1,
-      ease: "power3.out"
+      ease: "power2.out"
+    }, "-=0.8")
+    
+    // Finally: Circles appear together
+    .to(circleRefs.current, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out"
     }, "-=0.5");
 
     return () => {
@@ -58,7 +81,7 @@ function Body() {
 
   return (
     <div ref={wrapperRef} className="body-wrapper">
-      <img src="/leaf.jpg" alt="Body Background" className="body-bg-image" />
+      <img ref={bgImageRef} src="/leaf.jpg" alt="Body Background" className="body-bg-image" />
       <div ref={taglineRef} className="body-tagline">Indulge in Nature's Touch</div>
       <div ref={descriptionRef} className="body-description">Body care that hydrates, nourishes, and loves your skin back.</div>
       

@@ -4,6 +4,8 @@ import './index.css'
 import './App.css'
 import Navbar from './Navbar'
 import Skincare from './Skincare'
+import Body from './Body'
+import Bestseller from './Bestseller'
 
 function App() {
   // Hero refs
@@ -20,6 +22,8 @@ function App() {
   const navButtonsRef = useRef([])
 
   useEffect(() => {
+    if (!imageRef.current || !bareTextRef.current || !bloomTextRef.current) return;
+
     gsap.set(imageRef.current, { opacity: 0 })
     gsap.set([bareTextRef.current, bloomTextRef.current, taglineRef.current, desRef.current, buttonRef.current], {
       opacity: 0,
@@ -59,56 +63,23 @@ function App() {
       opacity: 1,
       duration: 4,
       ease: "power1.inOut"
-    }, "<") // "<" means start at same time as navbar
-
-    .to(bareTextRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: 1.5,
-      ease: "power2.out"
-    }, "-=3.2")
-    .to(bloomTextRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: 1.2,
-      ease: "power2.out"
-    }, "-=2.4")
-    .to(taglineRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power2.out"
-    }, "-=1.8")
-    .to(desRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power2.out"
-    }, "-=1.5")
-    .to(buttonRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power2.out"
-    }, "-=1")
+    }, "<")
+    .to(bareTextRef.current, { opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }, "-=3.2")
+    .to(bloomTextRef.current, { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }, "-=2.4")
+    .to(taglineRef.current, { opacity: 1, y: 0, duration: 1, ease: "power2.out" }, "-=1.8")
+    .to(desRef.current, { opacity: 1, y: 0, duration: 1, ease: "power2.out" }, "-=1.5")
+    .to(buttonRef.current, { opacity: 1, y: 0, duration: 1, ease: "power2.out" }, "-=0.4")
 
     return () => tl.kill()
   }, [])
 
   return (
     <div className="main-container">
-      <Navbar 
-        logoRef={logoRef} 
-        navLinksRef={navLinksRef} 
-        navButtonsRef={navButtonsRef} 
-      />
-      <div style={{ position: 'relative' }}>
-        <img 
-          ref={imageRef}
-          src="/bg.jpg" 
-          alt="Top Banner" 
-          className="top-image" 
-        />
+      <Navbar logoRef={logoRef} navLinksRef={navLinksRef} navButtonsRef={navButtonsRef} />
+      
+      {/* Hero Section */}
+      <div className="hero-section">
+        <img ref={imageRef} src="/bg.jpg" alt="Top Banner" className="top-image" />
         <div className="bare-bloom-text">
           <div ref={bareTextRef} className="bare-text">BARE</div>
           <div ref={bloomTextRef} className="bloom-text">Bloom.</div>
@@ -121,7 +92,15 @@ function App() {
         </div>
         <button ref={buttonRef} className="shop-now-btn">Shop Now</button>
       </div>
+
+      {/* Skincare Section */}
       <Skincare />
+
+      {/* Body Section */}
+      <Body />
+
+      {/* Bestseller Section */}
+      <Bestseller />
     </div>
   )
 }

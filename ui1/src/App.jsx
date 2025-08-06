@@ -6,6 +6,8 @@ import Navbar from './Navbar'
 import Skincare from './Skincare'
 import Body from './Body'
 import Bestseller from './Bestseller'
+import AboutUs from './AboutUs';
+import Footer from './Footer';
 
 function App() {
   // Hero refs
@@ -94,13 +96,25 @@ function App() {
       </div>
 
       {/* Skincare Section */}
-      <Skincare />
+      <div id="skincare">
+        <Skincare />
+      </div>
 
       {/* Body Section */}
-      <Body />
+      <div id="body">
+        <Body />
+      </div>
 
       {/* Bestseller Section */}
-      <Bestseller />
+      <div id="bestsellers">
+        <Bestseller />
+      </div>
+
+      {/* About Us Section */}
+      <div id="aboutus">
+        <AboutUs />
+      </div>
+      <Footer />
     </div>
   )
 }

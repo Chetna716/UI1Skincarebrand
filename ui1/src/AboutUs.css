@@ -1,0 +1,60 @@
+.aboutus-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 800px;
+  background: white;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutus-bg-image {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 98%;
+  max-width: none;
+  height: calc(100vh - 60px);
+  border-radius: 8px;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.aboutus-tagline {
+  font-family: 'DM Serif Text', serif;
+  font-style: italic;
+  font-size: 60px;
+  color: #fff;
+  text-align: center;
+  z-index: 2;
+  max-width: 700px;
+  line-height: 1.3;
+  margin-top: -90px;
+}
+
+.aboutus-description {
+  font-family: 'Funnel Display', sans-serif;
+  font-size: 22px;
+  color: #fff;
+  text-align: center;
+  z-index: 2;
+  max-width: 600px;
+  line-height: 1.5;
+  margin-top: 32px;
+}
+
+@media (max-width: 900px) {
+  .aboutus-tagline {
+    font-size: 38px;
+    max-width: 90vw;
+    margin-top: 60px;
+  }
+  .aboutus-description {
+    font-size: 16px;
+    max-width: 90vw;
+    margin-top: 18px;
+  }
+}

@@ -1,0 +1,74 @@
+.footer {
+  width: 100%;
+  background: #fcfcfc;
+  color: #0e0000;
+  padding: 18px 0 10px 0;
+  margin-top: 0;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.footer-brand {
+  font-family: 'Gantari', serif;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 2px;
+}
+
+.footer-link {
+  color: #090000;
+  text-decoration: none;
+  font-family: 'Gantari', sans-serif;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+.footer-link:hover {
+  color: #605e5c;
+}
+
+.footer-social {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 2px;
+}
+
+.footer-social-icon {
+  color: #090000;
+  font-size: 1.3rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-social-icon:hover {
+  color: #403e3a;
+}
+
+.footer-copy {
+  font-size: 0.95rem;
+  color: #443f3f;
+  margin-top: 2px;
+  font-family: 'Gantari', sans-serif;
+}
+
+.footer-logo {
+  width: 39px;
+  height: 39px;
+  object-fit: contain;
+  margin-right: 10px;
+  vertical-align: middle;
+}

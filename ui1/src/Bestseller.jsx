@@ -9,42 +9,42 @@ const bestsellerProducts = [
   { 
     id: 1, 
     name: "Natural Face Cream", 
-    price: "$24.99", 
+    price: "299Rs", 
     image: "/lotion.jpeg",
     category: "Skincare"
   },
   { 
     id: 2, 
     name: "Organic Body Soap", 
-    price: "$12.99", 
+    price: "249Rs", 
     image: "/soap.jpeg",
     category: "Body Care"
   },
   { 
     id: 3, 
     name: "Hydrating Toner", 
-    price: "$18.99", 
+    price: "349Rs", 
     image: "/toner.jpeg",
     category: "Skincare"
   },
   { 
     id: 4, 
     name: "Nourishing Body Oil", 
-    price: "$29.99", 
+    price: "449Rs", 
     image: "/body oil.jpeg",
     category: "Body Care"
   },
   { 
     id: 5, 
     name: "Exfoliating Scrub", 
-    price: "$22.99", 
+    price: "470Rs", 
     image: "/body scrub.jpeg",
     category: "Body Care"
   },
   { 
     id: 6, 
     name: "Protective Sunscreen", 
-    price: "$19.99", 
+    price: "499Rs", 
     image: "/sunscreen.jpeg",
     category: "Skincare"
   }
@@ -63,6 +63,8 @@ function Bestseller() {
   const categoryRefs = useRef([]);
   const carouselRef = useRef(null);
   const wrapperRef = useRef(null);
+  const infoBoxesRowRef = useRef(null);
+  const infoBoxRefs = useRef([]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -155,29 +157,95 @@ function Bestseller() {
     return bestsellerProducts.slice(startIndex, startIndex + 3);
   };
 
+  useEffect(() => {
+    if (!taglineRef.current || !wrapperRef.current) return;
+
+    // Set initial states
+    gsap.set(infoBoxesRowRef.current, { opacity: 0 });
+    gsap.set(infoBoxRefs.current, { opacity: 0, y: 40 });
+    gsap.set([taglineRef.current, descriptionRef.current], { 
+      opacity: 0, 
+      y: 30 
+    });
+    gsap.set(carouselRef.current, { 
+      opacity: 0,
+      y: 50
+    });
+
+    // Create timeline for animations
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: wrapperRef.current,
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play none none reverse"
+      }
+    });
+
+    // Info boxes row fade in
+    tl.to(infoBoxesRowRef.current, {
+      opacity: 1,
+      duration: 0.5,
+      ease: "power1.inOut"
+    })
+    .to(infoBoxRefs.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out",
+      stagger: 0.2
+    }, "-=0.2")
+    // Tagline appears
+    .to(taglineRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power2.out"
+    }, "-=0.5")
+    // Description appears
+    .to(descriptionRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out"
+    }, "-=0.8")
+    // Carousel appears
+    .to(carouselRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out"
+    }, "-=0.3");
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   return (
     <div ref={wrapperRef} className="bestseller-wrapper">
-      <img ref={bgImageRef} src="/bestsellerbg.jpg" alt="Bestseller Background" className="bestseller-bg-image" />
-      
+      {/* Info Boxes Row */}
+      <div ref={infoBoxesRowRef} className="info-boxes-row">
+        <div className="info-box" ref={el => infoBoxRefs.current[0] = el}>
+          <img src="/doctor.png" alt="Dermatologist Tested" className="info-icon" />
+          <div className="info-text">Dermatologist Tested</div>
+        </div>
+        <div className="info-box" ref={el => infoBoxRefs.current[1] = el}>
+          <img src="/vegan.png" alt="100% Vegan" className="info-icon" />
+          <div className="info-text">100% Vegan</div>
+        </div>
+        <div className="info-box" ref={el => infoBoxRefs.current[2] = el}>
+          <img src="/recycle.png" alt="Recyclable Packaging" className="info-icon" />
+          <div className="info-text">Recyclable Packaging</div>
+        </div>
+      </div>
+
+      {/* Tagline and Description */}
       <div ref={taglineRef} className="bestseller-tagline">Our Bestsellers</div>
       <div ref={descriptionRef} className="bestseller-description">
         Discover our most loved products, carefully crafted for your natural beauty journey.
       </div>
       
-      {/* Top Category Rectangles */}
-      <div className="category-rectangles">
-        {topCategories.map((category, index) => (
-          <div 
-            key={category.id} 
-            ref={el => categoryRefs.current[index] = el}
-            className="category-rectangle"
-          >
-            <h3>{category.title}</h3>
-            <p>{category.count}</p>
-          </div>
-        ))}
-      </div>
-
       {/* Product Carousel */}
       <div ref={carouselRef} className="product-carousel-container">
         <button className="carousel-btn prev-btn" onClick={prevSlide}>
@@ -225,4 +293,4 @@ function Bestseller() {
   );
 }
 
-export default Bestseller; 
+export default Bestseller;

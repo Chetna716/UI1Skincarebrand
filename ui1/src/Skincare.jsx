@@ -75,9 +75,9 @@ function Skincare() {
     .to(circleRefs.current, {
       opacity: 1,
       y: 0,
-      duration: 2.5,
+      duration: 1.2,
       ease: "power1.inOut",
-      stagger: 0.4
+      stagger: 0.18
     }, "-=0.5")
 
     return () => {

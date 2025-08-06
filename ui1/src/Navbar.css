@@ -50,26 +50,28 @@
     background: transparent;
     color: black;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 10px;
     font-family: 'Gantari', sans-serif;
 }
 
 .login-btn {
+    border-radius: 10px;
     border: none;
-    background: transparent;
+    background: black !important;
     padding: 0;
     margin-left: 0;
-    margin-right: 15px;
+    margin-right: 6px;
     font-weight: normal;
-    color: black;
+    color: white !important;
     font-family: 'Gantari', sans-serif;
 }
 
 .cart-btn {
-    background: #f0f0f0;
-    border: 1px solid #d0d0d0;
-    border-radius: 6px;
+    background: black !important;
+    border: 1px solid #222;
+    border-radius: 10px;
     padding: 8px 16px;
-    color: black;
+    color: white !important;
     font-family: 'Gantari', sans-serif;
+    margin-left: 0;
 }

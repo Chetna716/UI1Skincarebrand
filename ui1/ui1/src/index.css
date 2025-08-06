@@ -1,0 +1,115 @@
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: 'Gantari', sans-serif;
+}
+
+.main-container {
+  /* Removed padding to ensure navbar is at the very top */
+}
+
+.top-image {
+  width: 98%;
+  max-width: none;
+  height: calc(100vh - 60px); /* fills the remaining viewport height after navbar */
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  margin: 80px auto 0; /* increased top margin to move image down */
+  position: relative;
+}
+
+.top-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.5px;
+  background-color: black;
+}
+
+.bare-bloom-text {
+  position: absolute;
+  bottom: 150px;
+  left: 150px;
+  font-size: 115px;
+  font-weight: bold;
+  color: black;
+  z-index: 10;
+  line-height: 1.0;
+
+}
+
+.bare-text {
+  font-family: 'Gantari', sans-serif;
+  font-weight: 600;
+}
+
+.bloom-text {
+  font-family: 'Allura', cursive;
+  font-size: 120px;
+}
+
+.tagline-text {
+  position: absolute;
+  top: 240px;
+  right: 100px;
+  font-family: 'DM Serif Text', serif;
+  font-style: italic;
+  font-size: 40px;
+  color: black;
+  text-align: right;
+  line-height: 1.2;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.description-text {
+  position: absolute;
+  top: 300px;
+  right: 100px;
+  font-family: 'Funnel Display', serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: black;
+  text-align: right;
+  line-height: 1.7;
+  z-index: 10;
+  max-width: 530px;
+}
+
+.shop-now-btn {
+  position: absolute;
+  top: 450px;
+  right: 190px;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-family: 'Gantari', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 15px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.shop-now-btn:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+

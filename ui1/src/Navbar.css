@@ -34,6 +34,9 @@
     gap: 40px;
     padding: 0;
     margin: 0;
+    position: absolute; /* center the menu bar links */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .nav-links a {
@@ -99,7 +102,7 @@
     margin: 0 auto;
   }
   .logo img { width: 22px; height: 22px; }
-  .nav-links { display: none; }
+  .nav-links { display: none; position: static; left: auto; transform: none; }
   .nav-buttons { display: none; }
 
   /* Clickable logo button */

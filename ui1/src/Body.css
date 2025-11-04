@@ -18,7 +18,7 @@
   transform: translateX(-50%);
   width: 98%;
   max-width: none;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 70px);
   border-radius: 8px;
   object-fit: cover;
   z-index: 1;
@@ -26,11 +26,11 @@
 
 .body-tagline {
   position: absolute;
-  top: 50px;
-  right: 100px;
+  top: 8vh;
+  right: 6vw;
   font-family: 'DM Serif Text', serif;
   font-style: italic;
-  font-size: 70px;
+  font-size: 4.6vw;
   color: #113805;
   text-align: right;
   z-index: 2;
@@ -40,10 +40,10 @@
 
 .body-description {
   position: absolute;
-  top: 140px;
-  right: 100px;
+  top: 18vh;
+  right: 6vw;
   font-family: 'Funnel Display', sans-serif;
-  font-size: 21px;
+  font-size: 1.4vw;
   color: #113805;
   text-align: right;
   z-index: 2;
@@ -76,7 +76,7 @@
 .body-circles-wrapper {
   position: relative;
   width: 100%;
-  height: 700px;
+  height: 680px;
   z-index: 10;
 }
 
@@ -134,28 +134,53 @@
 }
 
 /* Individual body circle positions - centered horizontal alignment */
-.body-circle1 { 
-  top: 400px; 
-  left: 225px; 
-  height: 220px;
-  width: 220px;
+.body-circle1 { top: 50vh; left: 14vw; height: 220px; width: 220px; }
+.body-circle2 { top: 50vh; left: 32vw; height: 220px; width: 220px; }
+.body-circle3 { top: 50vh; left: 50vw; height: 220px; width: 220px; }
+.body-circle4 { top: 50vh; left: 68vw; height: 220px; width: 220px; }
+
+/* Responsive layout for Body */
+@media (max-width: 1024px) {
+  .body-tagline { font-size: 5.6vw; right: 6vw; }
+  .body-description { font-size: 1.8vw; right: 6vw; max-width: 50vw; }
 }
-.body-circle2 { 
-  top: 400px; 
-  left: 490px; 
-  height: 220px;
-  width: 220px;
+
+@media (max-width: 768px) {
+  .body-circles-wrapper {
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    padding: 24px 16px 40px 16px;
+    justify-items: center; /* center circles within each grid cell */
+  }
+  .body-circle-card {
+    position: static;
+    width: 42vw;
+    height: 42vw;
+    max-width: 260px;
+    max-height: 260px;
+    margin: 0 auto;
+  }
+  .body-tagline {
+    position: static;
+    text-align: center;
+    font-size: 7vw;
+    margin: 26px 16px 6px 16px;
+  }
+  .body-description {
+    position: static;
+    text-align: center;
+    font-size: 4vw;
+    max-width: 86vw;
+    margin: 8px auto 14px auto;
+  }
 }
-.body-circle3 { 
-  top: 400px; 
-  left: 760px; 
-  height: 220px;
-  width: 220px;
-}
-.body-circle4 { 
-  top: 400px; 
-  left: 1020px; 
-  height: 220px;
-  width: 220px;
+
+@media (max-width: 480px) {
+  /* Decrease circle size for small screens to avoid overlap */
+  .body-circle-card { width: 46vw; height: 46vw; }
+  .body-tagline { font-size: 8.5vw; }
+  .body-description { font-size: 4.5vw; }
 }
 

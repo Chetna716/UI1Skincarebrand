@@ -24,13 +24,13 @@ body {
 }
 
 .top-image {
-  width: 98%;
+  width: calc(100% - 2vw);
   max-width: none;
   height: calc(100vh - 60px); /* fills the remaining viewport height after navbar */
   object-fit: cover;
   display: block;
   border-radius: 8px;
-  margin: 80px auto 0; /* increased top margin to move image down */
+  margin: 80px 1vw 0; /* equal left/right gap to mirror right side */
   position: relative;
 }
 
@@ -46,14 +46,15 @@ body {
 
 .bare-bloom-text {
   position: absolute;
-  bottom: 150px;
-  left: 150px;
-  font-size: 115px;
+  top: 22vh;
+  right: 20vw;
+  left: auto;
+  font-size: 7.2vw;
   font-weight: bold;
   color: black;
   z-index: 10;
   line-height: 1.0;
-
+  text-align: right;
 }
 
 .bare-text {
@@ -63,41 +64,44 @@ body {
 
 .bloom-text {
   font-family: 'Allura', cursive;
-  font-size: 120px;
+  font-size: 7.5vw;
 }
 
 .tagline-text {
   position: absolute;
-  top: 240px;
-  right: 100px;
+  top: 46vh;
+  left: 6vw;
+  right: auto;
   font-family: 'DM Serif Text', serif;
   font-style: italic;
-  font-size: 40px;
+  font-size: 2.5vw;
   color: black;
-  text-align: right;
+  text-align: left;
   line-height: 1.2;
   z-index: 10;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .description-text {
   position: absolute;
-  top: 300px;
-  right: 100px;
+  top: 62vh;
+  left: 6vw;
+  right: auto;
   font-family: 'Funnel Display', serif;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 1.25vw;
   color: black;
-  text-align: right;
+  text-align: left;
   line-height: 1.7;
   z-index: 10;
-  max-width: 530px;
+  max-width: 30vw;
 }
 
 .shop-now-btn {
   position: absolute;
-  top: 450px;
-  right: 190px;
+  top: 80vh;
+  left: 8vw;
+  right: auto;
   background-color: black;
   color: white;
   border: none;
@@ -115,5 +119,41 @@ body {
   background-color: #333;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Hero responsive breakpoints */
+@media (max-width: 1200px) {
+  .bare-bloom-text { right: 20vw; font-size: 8vw; top: 22vh; }
+  .bloom-text { font-size: 8.5vw; }
+  .tagline-text { font-size: 3vw; left: 6vw; top: 46vh; }
+  .description-text { font-size: 1.6vw; left: 6vw; max-width: 40vw; top: 62vh; }
+  .shop-now-btn { left: 8vw; top: 80vh; }
+}
+
+@media (max-width: 992px) {
+  .top-image { height: calc(100vh - 70px); margin-top: 88px; }
+  .bare-bloom-text { top: 28vh; right: 18vw; font-size: 9vw; }
+  .bloom-text { font-size: 9.5vw; }
+  .tagline-text { top: 52vh; left: 6vw; font-size: 3.6vw; }
+  .description-text { top: 68vh; left: 6vw; font-size: 1.9vw; max-width: 46vw; }
+  .shop-now-btn { top: 84vh; left: 7vw; padding: 10px 22px; font-size: 15px; }
+}
+
+@media (max-width: 768px) {
+  .bare-bloom-text { top: 24vh; right: 16vw; font-size: 12vw; }
+  .bloom-text { font-size: 13vw; }
+  .tagline-text { top: 54vh; left: 5vw; font-size: 5.2vw; }
+  .description-text { display: none; }
+  .shop-now-btn { top: 88vh; left: 7vw; padding: 10px 22px; font-size: 15px; }
+}
+
+@media (max-width: 480px) {
+  .top-image { height: calc(100vh - 80px); margin-top: 92px; }
+  .bare-bloom-text { top: 23vh; left: 50%; right: auto; transform: translateX(-50%); font-size: 20vw; text-align: center; }
+  .bloom-text { font-size: 15vw; }
+  .tagline-text { top: 80vh; left: 28vw; right: auto; transform: none; font-size: 6vw; text-align: left; max-width: 88vw; }
+  .description-text { display: none; }
+  .shop-now-btn { top: 90vh; left: 34vw; right: auto; transform: none; font-size: 14px; }
+  .shop-now-btn:hover { transform: translateY(-2px); }
 }
 

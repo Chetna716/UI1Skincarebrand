@@ -87,7 +87,7 @@ function App() {
           <div ref={bloomTextRef} className="bloom-text">Bloom.</div>
         </div>
         <div ref={taglineRef} className="tagline-text">
-          Nurture Your Skin. Nourish the Earth.
+          Nurture Your Skin.<br/>Nourish the Earth.
         </div>
         <div ref={desRef} className="description-text">
           At BareBloom, we craft skincare that's pure, effective, and planet-friendly so you can glow naturally while caring for the world around you.

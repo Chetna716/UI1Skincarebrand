@@ -66,6 +66,7 @@ function Bestseller() {
   const infoBoxesRowRef = useRef(null);
   const infoBoxRefs = useRef([]);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [itemsPerSlide, setItemsPerSlide] = useState(() => (typeof window !== 'undefined' && window.innerWidth <= 768 ? 1 : 3));
 
   useEffect(() => {
     if (!bgImageRef.current || !taglineRef.current || !wrapperRef.current) return;
@@ -141,21 +142,35 @@ function Bestseller() {
   }, []);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => 
-      prev === Math.ceil(bestsellerProducts.length / 3) - 1 ? 0 : prev + 1
-    );
+    const totalSlides = Math.ceil(bestsellerProducts.length / itemsPerSlide);
+    setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => 
-      prev === 0 ? Math.ceil(bestsellerProducts.length / 3) - 1 : prev - 1
-    );
+    const totalSlides = Math.ceil(bestsellerProducts.length / itemsPerSlide);
+    setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
   };
 
   const getVisibleProducts = () => {
-    const startIndex = currentSlide * 3;
-    return bestsellerProducts.slice(startIndex, startIndex + 3);
+    const startIndex = currentSlide * itemsPerSlide;
+    return bestsellerProducts.slice(startIndex, startIndex + itemsPerSlide);
   };
+
+  // Update items per slide responsively
+  useEffect(() => {
+    const onResize = () => {
+      const nextItems = window.innerWidth <= 768 ? 1 : 3;
+      setItemsPerSlide((prev) => {
+        if (prev !== nextItems) {
+          // Reset to first slide to avoid index overflow
+          setCurrentSlide(0);
+        }
+        return nextItems;
+      });
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   useEffect(() => {
     if (!taglineRef.current || !wrapperRef.current) return;
@@ -281,7 +296,7 @@ function Bestseller() {
 
       {/* Carousel Indicators */}
       <div className="carousel-indicators">
-        {Array.from({ length: Math.ceil(bestsellerProducts.length / 3) }).map((_, index) => (
+        {Array.from({ length: Math.ceil(bestsellerProducts.length / itemsPerSlide) }).map((_, index) => (
           <button
             key={index}
             className={`indicator ${currentSlide === index ? 'active' : ''}`}

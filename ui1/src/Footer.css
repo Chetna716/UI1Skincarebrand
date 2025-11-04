@@ -3,7 +3,7 @@
   background: #fcfcfc;
   color: #0e0000;
   padding: 18px 0 10px 0;
-  margin-top: 0;
+  margin-top: 16px;
 }
 
 .footer-content {
@@ -71,4 +71,12 @@
   object-fit: contain;
   margin-right: 10px;
   vertical-align: middle;
+}
+
+/* Tighten footer spacing on mobile */
+@media (max-width: 768px) {
+  .footer { padding: 10px 0 12px 0; margin-top: 28px; }
+  .footer-content { gap: 12px; }
+  .footer-brand { margin-bottom: 4px; }
+  .footer-copy { margin-top: 0; font-size: 0.9rem; }
 }

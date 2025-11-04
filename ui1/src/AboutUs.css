@@ -58,3 +58,16 @@
     margin-top: 18px;
   }
 }
+
+/* Mobile spacing tighten to reduce whitespace before footer */
+@media (max-width: 768px) {
+  .aboutus-wrapper { min-height: auto; padding-bottom: 48px; }
+  .aboutus-bg-image { height: 45vh; }
+  .aboutus-tagline { margin-top: 20px; font-size: 32px; }
+  .aboutus-description { font-size: 15px; margin-top: 10px; }
+}
+
+@media (max-width: 480px) {
+  .aboutus-bg-image { height: 40vh; }
+  .aboutus-tagline { font-size: 28px; }
+}

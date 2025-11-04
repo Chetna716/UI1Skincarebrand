@@ -86,24 +86,24 @@
 /* Individual circle positions and colors - 2x2 grid layout */
 .circle1 { 
   top: 100px; 
-  left: 450px; 
+  left: 30vw; 
   height: 270px;
   width: 270px;
 }
 .circle2 { 
-  top: 140px; 
-  right: 530px; 
+  top: 90px; 
+  right: 37vw; 
   height: 185px;
   width: 185px;
 }
 .circle3 { 
-  top: 400px; 
-  left: 500px; 
+  top: 360px; 
+  left: 31vw; 
 
 }
 .circle4 { 
-  top: 340px; 
-  right: 500px;
+  top: 300px; 
+  right: 35vw;
   height: 235px;
   width: 235px;
 }
@@ -111,10 +111,10 @@
 .skincare-tagline {
   position: absolute;
   top: 150px;
-  right: 50px;
+  right: 5vw;
   font-family: 'DM Serif Text', serif;
   font-style: italic;
-  font-size: 60px;
+  font-size: 3.8vw;
   color: #113805;
   text-align: right;
   z-index: 10;
@@ -126,7 +126,7 @@
 .skincare-shop-btn {
   position: absolute;
   top: 390px;
-  right: 140px;
+  right: 9vw;
   background-color: #113805;
   color: white;
   border: none;
@@ -149,12 +149,73 @@
 .skincare-description {
   position: absolute;
   top: 320px;
-  left: 60px;
+  left: 5vw;
   font-family: 'Funnel Display', sans-serif;
-  font-size: 21px;
+  font-size: 1.3vw;
   color: #113805;
   text-align: left;
   z-index: 10;
   max-width: 360px;
   line-height: 1.5;
+}
+
+/* Responsive layout for Skincare */
+@media (max-width: 1024px) {
+  .circles-wrapper { height: 640px; }
+  .skincare-tagline { font-size: 4.6vw; right: 6vw; }
+  .skincare-description { font-size: 1.8vw; left: 6vw; max-width: 46vw; }
+}
+
+@media (max-width: 768px) {
+  .circles-wrapper {
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    padding: 24px 16px 40px 16px;
+    justify-items: center;
+  }
+  .circle-card {
+    position: relative; /* keep labels positioned inside each circle */
+    width: 42vw;
+    height: 42vw;
+    max-width: 260px;
+    max-height: 260px;
+    margin: 0 auto;
+  }
+  /* Neutralize desktop offsets so circles don't overlap in grid */
+  .circle1, .circle2, .circle3, .circle4 {
+    top: auto; left: auto; right: auto;
+  }
+  .skincare-tagline {
+    position: static;
+    text-align: center;
+    font-size: 7vw;
+    margin: 24px 16px 6px 16px;
+    grid-column: 1 / -1;
+  }
+  .skincare-description {
+    position: static;
+    text-align: center;
+    font-size: 4vw;
+    max-width: 86vw;
+    margin: 8px auto 14px auto;
+    grid-column: 1 / -1;
+  }
+  .skincare-shop-btn {
+    position: static;
+    margin: 10px auto 20px auto;
+    padding: 10px 22px;
+    font-size: 15px;
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .circles-wrapper { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 20px 12px 28px 12px; justify-items: center; }
+  .circle-card { position: relative; width: 44vw; height: 44vw; max-width: 180px; max-height: 180px; }
+  .circle1, .circle2, .circle3, .circle4 { top: auto; left: auto; right: auto; }
+  .skincare-tagline { font-size: 8vw; text-align: center; line-height: 1.2; grid-column: 1 / -1; }
+  .skincare-description { font-size: 4.2vw; text-align: center; max-width: 88vw; margin: 8px auto 12px auto; grid-column: 1 / -1; }
+  .skincare-shop-btn { position: static; margin: 12px auto 20px auto; grid-column: 1 / -1; }
 }

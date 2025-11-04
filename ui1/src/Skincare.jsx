@@ -88,9 +88,9 @@ function Skincare() {
   return (
     <div ref={wrapperRef} className="circles-wrapper">
       <div ref={taglineRef} className="skincare-tagline">
-        Find Your Perfect Skincare Match
+        <span className="skincare-line1">Find Your Perfect</span><br/>
+        <span className="skincare-line2">Skincare Match</span>
       </div>
-      <button ref={shopButtonRef} className="skincare-shop-btn">Shop All</button>
       <div ref={descriptionRef} className="skincare-description">
         From gentle cleansers to nourishing serums, explore our collections crafted for every skin type.
       </div>
@@ -111,6 +111,7 @@ function Skincare() {
           <div className="circle-text">{item.label}</div>
         </div>
       ))}
+      <button ref={shopButtonRef} className="skincare-shop-btn">Shop All</button>
     </div>
   )
 }
